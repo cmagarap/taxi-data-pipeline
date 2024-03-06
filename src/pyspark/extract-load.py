@@ -15,5 +15,5 @@ filtered_data.write \
     .option('dbtable', 'trip') \
     .option('user', 'cmagarap') \
     .option('password', 'Agarapchris101') \
-    .mode('append') \
+    .mode('overwrite') \
     .save()
