@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS trip(
+    VendorID INTEGER NOT NULL,
+    tpep_pickup_datetime TEXT NOT NULL,
+    tpep_dropoff_datetime TEXT NOT NULL,
+    passenger_count BIGINT NOT NULL,
+    trip_distance REAL NOT NULL,
+    RatecodeID BIGINT NOT NULL,
+    store_and_fwd_flag VARCHAR(255) NOT NULL,
+    PULocationID INTEGER NOT NULL,
+    DOLocationID INTEGER NOT NULL,
+    payment_type BIGINT NOT NULL,
+    fare_amount REAL NOT NULL,
+    extra REAL NOT NULL,
+    mta_tax REAL NOT NULL,
+    tip_amount REAL NOT NULL,
+    tolls_amount REAL NOT NULL,
+    improvement_surcharge REAL NOT NULL,
+    total_amount REAL NOT NULL,
+    congestion_surcharge REAL NOT NULL,
+    Airport_fee REAL NOT NULL
+);
