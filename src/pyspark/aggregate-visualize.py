@@ -3,13 +3,17 @@ from pyspark.sql.functions import sum, month, year, round
 from pyspark.sql.types import DateType
 import plotly.express as px
 import os
+import logging
 
+logging.basicConfig(level=logging.INFO)
+
+logging.info('Connecting to MySQL...')
 trip_data = spark.read \
     .format('jdbc') \
-    .option('url', 'jdbc:mysql://localhost:3306/taxidb') \
+    .option('url', 'jdbc:mysql://localhost:3306/taxidb?useSSL=false') \
     .option('dbtable', 'trip') \
-    .option('user', 'cmagarap') \
-    .option('password', 'Agarapchris101') \
+    .option('user', 'root') \
+    .option('password', 'root') \
     .load()
 
 filtered_data = trip_data.filter(year('tpep_pickup_datetime') == 2023) \
@@ -24,13 +28,17 @@ aggregate_data = filtered_data.groupby(
 aggregate_data_pd = aggregate_data.toPandas()
 aggregate_data_pd.rename(columns={'total_amount': 'Amount', 'tpep_pickup_date': 'Date'}, inplace=True)
 
+logging.info('Generating Data Figure...')
 # Line Chart
 fig = px.line(aggregate_data_pd, x='Date', y='Amount',
               title='TCL Trip Total Amount Earned per day for December 2023', markers=True)
 fig.show()
+logging.info('Figure generated!')
 
 if not os.path.exists('figures'):
     os.mkdir('figures')
 
+logging.info('Saving Data Figure as HTML file...')
 # Save the Figure into an HTML File
 fig.write_html('figures/line-fig.html')
+logging.info('Figure saved!')
