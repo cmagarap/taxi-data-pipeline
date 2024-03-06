@@ -12,5 +12,6 @@ RUN apt-get update && \
 #COPY src/ ./
 RUN pip install -r requirements.txt
 
-# START WEBAPP SERVICE
+# Run the Python scripts
 CMD [ "python", "src/pyspark/extract-load.py" ]
+CMD [ "python", "src/pyspark/aggregate-visualize.py" ]
