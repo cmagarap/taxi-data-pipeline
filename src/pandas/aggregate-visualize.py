@@ -30,5 +30,5 @@ if not os.path.exists('figures'):
 
 logging.info('Saving Data Figure as HTML file...')
 # Save the Figure into an HTML File
-fig.write_html('figures/line-fig1.html')
+fig.write_html('figures/line-fig.html')
 logging.info('Figure saved!')
