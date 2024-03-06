@@ -13,8 +13,8 @@ filtered_data.write \
     .format('jdbc') \
     .option('url', 'jdbc:mysql://localhost:3306/taxidb?useSSL=false') \
     .option('dbtable', 'trip') \
-    .option('user', 'root') \
-    .option('password', 'root') \
+    .option('user', 'user') \
+    .option('password', 'user123') \
     .mode('overwrite') \
     .save()
 logging.info('Data successfully loaded into MySQL')

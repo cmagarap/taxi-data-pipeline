@@ -12,8 +12,8 @@ trip_data = spark.read \
     .format('jdbc') \
     .option('url', 'jdbc:mysql://localhost:3306/taxidb?useSSL=false') \
     .option('dbtable', 'trip') \
-    .option('user', 'root') \
-    .option('password', 'root') \
+    .option('user', 'user') \
+    .option('password', 'user123') \
     .load()
 
 filtered_data = trip_data.filter(year('tpep_pickup_datetime') == 2023) \
