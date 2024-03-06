@@ -2,6 +2,7 @@ from __init__ import spark
 from pyspark.sql.functions import sum, month, year, round
 from pyspark.sql.types import DateType
 import plotly.express as px
+import os
 
 trip_data = spark.read \
     .format('jdbc') \
@@ -27,3 +28,9 @@ aggregate_data_pd.rename(columns={'total_amount': 'Amount', 'tpep_pickup_date': 
 fig = px.line(aggregate_data_pd, x='Date', y='Amount',
               title='TCL Trip Total Amount Earned per day for December 2023', markers=True)
 fig.show()
+
+if not os.path.exists('figures'):
+    os.mkdir('figures')
+
+# Save the Figure into an HTML File
+fig.write_html('figures/line-fig.html')
