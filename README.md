@@ -95,14 +95,6 @@ docker-compose up
 3. An interactive graph will open in your default web browser and an HTML file is saved in the figures folder in the Docker container.
 
 
-## Discussion
-I created three solutions in order to make sure that I cover more scenarios. The easiest one is the Pandas solution because I just used SQLite and Pandas for that. There was no Java and server database dependencies and I have experience in using the Pandas library.
-
-The second solution I did was using Pyspark. For me, this is the mid-tier of difficulty among the three because it depends on Java and MySQL on local machine to run. The challenge I faced here was looking for the right mysql jdbc connector and connecting it to the MySQL on my local machine. Because I am not used to local Pyspark setups, I looked for a lot of discussions online on how to properly implement this and I succeeded.
-
-The Docker solution was the most difficult for me. First, because of some images from docker hub depends on Linux x86 architecture and the machine I am using is Mac arm64. I spent a lot of time on this, I tried turning on Rosetta (the emulation software on my Mac) but the image I initially used did not work. So I tried to use the Python image python:3.11.8-bullseye and the setup worked. I also included Java installation in the Dockerfile because of Pyspark. Another challenge I faced on Docker is the connection of MySQL container to the Python container. The jdbc driver did not work at first but when I configured the right file paths, I got connected to MySQL. I really tried so hard on this solution because I wanted to make the project setup easier but the configuration of Docker took a lot of time from me.
-
-Lastly, I forgot to create a view for the aggregated data. I don't think I will make it to the deadline of this test if I added it at the last minute.
 
 ## Output
 #### Visualization:
